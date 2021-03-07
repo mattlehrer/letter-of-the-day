@@ -1,53 +1,57 @@
 <script>
   import { onMount } from "svelte";
 
-  let count: number = 0;
-  onMount(() => {
-    const interval = setInterval(() => count++, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  });
+  onMount(() => {});
+
+  const letters = {
+    a: {
+      letter: "a",
+      images: [
+        { src: "/images/a/apple.png", caption: "Apple" },
+        { src: "/images/a/alligator.png", caption: "Alligator" },
+        { src: "/images/a/ant.png", caption: "Ant" },
+      ],
+    },
+  };
+
+  const currentLetter = letters.a;
 </script>
 
 <style>
-  div {
-    & header {
-      font-size: calc(10px + 2vmin);
-    }
-
-    & img {
-      height: 36vmin;
-      animation: App-logo-spin infinite 1.6s ease-in-out alternate;
-    }
-  }
-
-  @keyframes App-logo-spin {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(1.06);
-    }
+  header {
+    font-size: 15rem;
   }
 </style>
 
-<div class="text-center">
-  <header
-    class="flex flex-col items-center justify-center min-h-screen text-gray-700 bg-gray-100"
-  >
-    <img src="/logo.svg" alt="logo" class="mb-12 pointer-events-none" />
-    <p>Edit <code>src/App.svelte</code> and save to reload.</p>
-    <p>Page has been open for <code>{count}</code> seconds.</p>
-    <p>
-      <a
-        class="text-red-500"
-        href="https://svelte.dev"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn Svelte
-      </a>
-    </p>
+<div class="min-h-screen text-center bg-gray-100">
+  <!-- Letter -->
+  <header class="flex flex-col justify-center text-gray-700 ">
+    {currentLetter.letter.toLocaleUpperCase()}
+    {currentLetter.letter}
   </header>
+
+  <!-- Example words -->
+  <div class="flex flex-wrap justify-around space-x-6">
+    <figure class="w-1/3">
+      <img
+        src="{currentLetter.images[0].src}"
+        alt="{currentLetter.images[0].caption}"
+      />
+      <figcaption>{currentLetter.images[0].caption}</figcaption>
+    </figure>
+    <figure class="w-1/3">
+      <img
+        src="{currentLetter.images[1].src}"
+        alt="{currentLetter.images[1].caption}"
+      />
+      <figcaption>{currentLetter.images[1].caption}</figcaption>
+    </figure>
+    <figure class="w-1/3">
+      <img
+        src="{currentLetter.images[2].src}"
+        alt="{currentLetter.images[2].caption}"
+      />
+      <figcaption>{currentLetter.images[2].caption}</figcaption>
+    </figure>
+  </div>
 </div>

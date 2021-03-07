@@ -15,4 +15,7 @@ module.exports = {
     "@snowpack/plugin-typescript",
   ],
   packageOptions: { types: true },
+  devOptions: {
+    open: "none", // set to '**Default**' to open browser on run
+  },
 };
